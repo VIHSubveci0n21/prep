@@ -1,0 +1,359 @@
+/* RESETEO DE ESTILOS PARA TODAS LAS PAGINAS */
+*{margin: 0; padding: 0; list-style: none; text-decoration: none; box-sizing: border-box; border: none; outline: none; font-family: LiberationSans, sans-serif; line-height: 125%;}
+
+html, body {background-color: #1d5288; color: white; font-size: 14px; zoom: 80%;}
+span.glyphicon {margin-right: 5px;}
+
+
+
+
+/* APLICACIÓN DE ESTIOS A NIVEL GENERAL */
+p {word-wrap: break-word; word-break: break-all;}
+
+a {color: #e6eaf1; text-decoration: none;}
+a:hover {color: #0b5345; text-decoration: underline;}
+
+input, textarea, select, button {margin: 0; -webkit-box-sizing: border-box; -moz-box-sizing: border-box; box-sizing: border-box; border: 1px solid #000; border-radius: 5px; padding-left: 5px; color: #1d5288;}
+
+th {background: #1d5288; color: #fff; text-align: center; padding: 5px;}
+td {padding: 5px;}
+
+
+	.verticald {vertical-align: middle; text-align: right; height: 50px; padding-right: 01px;}
+	.verticali {vertical-align: middle; text-align: left;  height: 50px; padding-left:  01px;}
+
+	#footerArea {position: fixed; bottom: 0; left: 0; padding: 8px 0 7px 10px; font-size: 13px; border-top: 1px solid #416f9d; background: #1d5288; color: #FFF; width: 100%;}
+
+
+
+
+
+
+
+
+
+/* /////////////////////////////////////////////////////////////////////// 01 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+/* ------------------------------------------------------------  BOTONES  */
+	.btn_aceptar  {width: 50%; background: #009ACD; color: #000; font-weight: bolder; margin-top: 10px;}
+	.btn_guardar  {width: 50%; background: #3CB371; color: #000; font-weight: bolder; margin-top: 10px;}
+	.btn_regresar {width: 50%; background: #DAA520; color: #000; font-weight: bolder; margin-top: 10px;}
+
+
+
+/* ------------------------------------------------------------  ALINEACION DE TEXTO  */
+	.centrado {text-align: center;}
+	.derecha {text-align: right;}
+	.izquierda {text-align: left;}
+	.justificado {text-align: justify;}
+
+
+
+/* ------------------------------------------------------------  ALINEACION DE TEXTO RESPECTO DE UNA IMAGEN  */
+	.vcentrado {vertical-align: middle;}
+	.vsuperior {vertical-align: top;}
+	.vinferiro {vertical-align: bottom;}
+
+
+
+/* ------------------------------------------------------------  TRANSFORMACION DE TEXTOS  */
+	.mayusculas {text-transform: uppercase;}
+	.minusculas {text-transform: lowercase;}
+	.primeramayuscula {text-transform: capitalize;}
+
+
+
+/* ------------------------------------------------------------  SANGRIA EN LOS PARRAFOS  */
+	.sangria {text-indent: 50px;}
+
+
+
+/* ------------------------------------------------------------  FUENTES  */
+	.titulo1     {font-family: "Times New Roman", Times,  serif;      font-size: 28px; font-weight: bolder; padding: 0; margin: 0;}
+	.titulo2     {font-family: Arial, Helvetica,          sans-serif; font-size: 20px; font-weight: bolder; padding: 0; margin: 0;}
+	.parrafo     {font-family: "Lucida Console", Courier, monospace;  font-size: 12px;                      padding: 0; margin: 0;}
+	.textoimagen {font-family: "Lucida Console", Courier, monospace;  font-size: 10px;                      padding: 0; margin: 0;}
+
+
+
+/* ------------------------------------------------------------  CONTENEDORES  */
+/* ESTILOS PARA LOS CONTENEDORES */
+	/*.contenedor01 {width: 100%; margin: 0 auto;}*/
+	.contenedor01 {width:  100%; margin: 0 auto;}
+	.contenedor02 {width:  90%;  margin: 0 auto;}
+	.contenedor03 {width:  80%;  margin: 0 auto;}
+	.contenedor04 {width:  70%;  margin: 0 auto;}
+	.contenedor05 {width:  60%;  margin: 0 auto;}
+
+
+
+/* ------------------------------------------------------------  FONDOS  */
+/* COLORES PARA FONDOS */
+	.celeste01o {background: rgb( 214, 234, 248 ); color:  #154360 }
+
+
+	.verde		{background-color: #4CAF50; border: none; color: #FFF; padding: 16px 32px; text-decoration: none; margin: 4px 2px; cursor: pointer;}
+	.gris		{background-color: #DCDCDC; border: none; color: #000; padding: 16px 32px; text-decoration: none; margin: 4px 2px; cursor: pointer;}
+	.azul		{background-color: #154360; border: none; color: #FFF; padding: 16px 32px; text-decoration: none; margin: 4px 2px; cursor: pointer;}
+	.rojo		{background-color: #B22222; border: none; color: #FFF; padding: 16px 32px; text-decoration: none; margin: 4px 2px; cursor: pointer;}
+	.naranja	{background-color: #FF7F24; border: none; color: #FFF; padding: 16px 32px; text-decoration: none; margin: 4px 2px; cursor: pointer;}
+	.cafe 		{background-color: #8B4726; border: none; color: #FFF; padding: 16px 32px; text-decoration: none; margin: 4px 2px; cursor: pointer;}
+	.mostaza	{background-color: #CD950C; border: none; color: #FFF; padding: 16px 32px; text-decoration: none; margin: 4px 2px; cursor: pointer;}
+	.crema		{background-color: #FFF68F; border: none; color: #000; padding: 16px 32px; text-decoration: none; margin: 4px 2px; cursor: pointer;}
+	.celeste	{background-color: #8DEEEE; border: none; color: #000; padding: 16px 32px; text-decoration: none; margin: 4px 2px; cursor: pointer;}
+
+
+
+/* ------------------------------------------------------------  TABLAS  */
+/* TABLAS COLAPSADAS */
+	.colapsada {max-width: 100%; border-collapse: collapse;}
+
+/* TABLA CON BORDES */
+	.conbordes {max-width: 100%;}
+	.conbordes th, td {border: 1px solid #000; vertical-align: middle;}
+	.sinbordes th, td {border: 0px solid #FFF; vertical-align: middle;}
+
+/* TABLAS TIPO ZEBRA */
+	.zebra_azul {max-width: 100%;}
+	.zebra_azul thead th {width: 25%; background:  #1a237e; color: #FFF; vertical-align: middle;}
+	.zebra_azul tbody tr:nth-child(even) {background: #d4e6f1;}
+	.zebra_azul tbody tr:hover {background: rgb(41, 128, 185); color: #FFF;}
+	.zebra_azul tbody td {width: auto; vertical-align: middle; font-size: 12px;}
+
+	.zebra_verde {max-width: 100%;}
+	.zebra_verde thead th {width: 25%; background:  #1b5e20; color: #FFF; vertical-align: middle;}
+	.zebra_verde tbody tr:nth-child(even) {background: #c8e6c9;}
+	.zebra_verde tbody tr:hover {background: rgb(129, 199, 132); color: #FFF;}
+	.zebra_verde tbody td {width: auto; vertical-align: middle; font-size: 12px;}
+
+
+
+/* ------------------------------------------------------------  FORMULARIOS  */
+.formulario
+	{
+  		width : 100%;
+  		margin: 0;
+		-webkit-box-sizing: border-box; /* For legacy WebKit based browsers */
+		-moz-box-sizing: border-box; /* For legacy (Firefox <29) Gecko based browsers */
+		box-sizing: border-box;
+
+		border: 1px solid #ccc;
+		border-radius: 4px;
+		font-size: 12px;
+		background-color: #FFF;
+
+		background-position: 5px 5px;
+		background-repeat: no-repeat;
+		padding: 10px 10px 10px 40px;
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* /////////////////////////////////////////////////////////////////////// 02 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+/* ////////////////////////////////////////////////////////////////////// MENU \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+/* ------------------------------------------------------------  BARRA DE NAVEGACION HORIZONTAL  */
+.barramenu {width: 100%; position: absolute; top: 55px;}
+#barramenu ul {list-style-type: none; margin: 0; padding: 0; overflow: hidden; background-color: #1d5288;}
+#barramenu li {float: left;} /* PARA CONVERTIR LA BARRA HORIZONTAL A VERTICAL, SE ELIMINA ESTA LINEA */
+#barramenu li a {display: block; color: white; text-align: center; padding: 14px 16px; text-decoration: none;}
+#barramenu li a:hover {background-color: #FFF; color: #1d5288;}
+
+.usuario {margin: 5px 0px; float: right; color: #FFF; margin-right: 10px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* /////////////////////////////////////////////////////////////////////// 03 \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+/* /////////////////////////////////////////////////////////////////// REGISTROS \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\ */
+/* ------------------------------------------------------------  BARRA DE NAVEGACION HORIZONTAL  */
+.registros {width: 100%; position: absolute; top: 110px; background: #FFF; color: #1d5288;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* *********************************************************************************************************** */
+/*                                       ESTILOS PARA LAS VENTANAS MODALES                                     */
+/* *********************************************************************************************************** */
+#ModalAgregarSeguimiento, #ModalSeguimiento {margin-top: 60px;}
+
+
+
+
+
+/* *********************************************************************************************************** */
+/*                                       ESTILOS PARA EL BANNER                                                */
+/* *********************************************************************************************************** */
+#encabezado {background-color: #1d5288; color: white; font-size: 15px; width: 100%; height: 50px; vertical-align: middle; position: fixed;}
+.logobanner {max-width: 42px; min-width: 0px;}
+
+
+
+
+/* *********************************************************************************************************** */
+/*                                       ESTILOS PARA EL LOGIN                                                 */
+/* *********************************************************************************************************** */
+/* ESTILOS PARA LA SECCIOON DEL LOGIN */
+#flagArea1 {position: absolute; top: 2px; left: 10px;  border-radius: 02px; max-width: 60px; margin-bottom: 5%;}
+#flagArea2 {position: absolute; top: 2px; left: 66px;  border-radius: 02px; max-width: 60px; margin-bottom: 5%;}
+#flagArea3 {position: absolute; top: 2px; left: 100px; border-radius: 02px; max-width: 60px; margin-bottom: 5%;}
+
+#titleArea {position: absolute; top: 4px; left: 177px; font-size: 19px;}
+
+#introArea {width: 75%; position: absolute; top: 15px; left: 177px; font-size: 24px; color: #FFF;}
+
+#loginField {position: relative; margin: 128px auto 0 auto; width: 270px;}
+
+		#loginField input[type=text],input[type=password],input[type=code]
+			{color: #000; width: 255px; height: 25px; border: 01px solid #000; padding: 6px 6px; margin: 4px 0; border-radius: 05px; box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.14);}
+
+#bannerArea {margin-bottom: 21px; border: none; text-align: center;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+@media (max-width: 768px)
+{
+
+}
