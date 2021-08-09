@@ -1,22 +1,28 @@
 <?php
-	header('Content-Type: text/html; charset=UTF-8');
-	date_default_timezone_set("America/Guatemala");
-	session_start();
+header('Content-Type: text/html; charset=UTF-8');
+date_default_timezone_set("America/Guatemala");
+session_start();
 
-	include_once('../../conexion.php');
+include_once('../../conexion.php');
 
 ?>
 
 <script type="text/javascript">
-
-$(document).ready(function()
-  {
-    //FORMATO DE MASCARAS
-    $('#expedienteclinica').mask('000000', {placeholder: '######'});
-    $('#expedientevicit').mask('00000', {placeholder: '#####'});
-    $('#numerocui').mask('9999 99999 9999', {placeholder: '0000 00000 0000'});
-    $('#cuiconstruido').mask('S00000000000SSSS', {placeholder: 'A###########AAAA'});
-  });
+	$(document).ready(function() {
+		//FORMATO DE MASCARAS
+		$('#expedienteclinica').mask('000000', {
+			placeholder: '######'
+		});
+		$('#expedientevicit').mask('00000', {
+			placeholder: '#####'
+		});
+		$('#numerocui').mask('9999 99999 9999', {
+			placeholder: '0000 00000 0000'
+		});
+		$('#cuiconstruido').mask('S00000000000SSSS', {
+			placeholder: 'A###########AAAA'
+		});
+	});
 </script>
 
 <div id="tope"></div>
@@ -24,11 +30,11 @@ $(document).ready(function()
 <div class="registros">
 
 	<div class="row">
-<!-- *** COLUMNA IZQUIERDA ** -->
+		<!-- *** COLUMNA IZQUIERDA ** -->
 		<div class="col-md-7">
 			<div class="contenedor04">
 				<form id="frmgenerales" name="frmgenerales" method="POST" action="javascript: GuardarDatosUsuarioClinica();">
-					<table  class="colapsada sinbordes zebra_azul table table-bordered" style="width: 100%; margin-top: 5px;">
+					<table class="colapsada sinbordes zebra_azul table table-bordered" style="width: 100%; margin-top: 5px;">
 						<thead>
 							<tr>
 								<th colspan="3" style="width: 50%;">DATOS GENERALES DEL PACIENTE</th>
@@ -37,11 +43,11 @@ $(document).ready(function()
 						<tbody>
 
 							<input type="hidden" id="subreceptor" name="subreceptor" value="<?php echo $_SESSION['subreceptor']; ?>">
-		<!-- DATOS DE LA CLINICA -->
+							<!-- DATOS DE LA CLINICA -->
 							<tr>
 								<td>CLINICA EN LA QUE ES REGISTRADO </td>
 								<td><input type="radio" id="clinicaprep" name="clinicapp" value="PREP" class="mayusculas"> PREP </td>
-								<td><input type="radio" id="clinicapep"  name="clinicapp" value="PEP"  class="mayusculas"> PEP </td>
+								<td><input type="radio" id="clinicapep" name="clinicapp" value="PEP" class="mayusculas"> PEP </td>
 							</tr>
 							<tr>
 								<td>TIPO DE USUARIO </td>
@@ -54,30 +60,28 @@ $(document).ready(function()
 								</td>
 							</tr>
 							<!-- DATOS DE IDENTIFICACION DEL USUARIO -->
-												<tr>
-													<td>TIPO DE DOCUMENTO DE IDENTIFICACION </td>
-													<td colspan="2">
-														<select id="tipodocumento" name="tipodocumento" style="width: 95%;" class="mayusculas" required>
-															<option value="0">...</option>
-															<?php
-																$sql = "SELECT * FROM tipodocumento";
-																$result = mysqli_query($conexion, $sql);
-																$filas = mysqli_affected_rows($conexion);
-																if($filas > 0)
-																	{
-																		while($fila = mysqli_fetch_assoc($result))
-																			{
-																				echo '<option value="' . $fila['documento'] . '">' . $fila['documento'] . '</option>';
-																			}
-																	}
-															?>
-														</select>
-													</td>
-												</tr>
-												<tr>
-													<td>CODIGO UNICO DE IDENTIFICACION (CUI) </td>
-													<td colspan="2"><input type="text" id="numerocui" name="numerocui" style="color: #1d5288; width: 95%;" class="mayusculas"></td>
-												</tr>
+							<tr>
+								<td>TIPO DE DOCUMENTO DE IDENTIFICACION </td>
+								<td colspan="2">
+									<select id="tipodocumento" name="tipodocumento" style="width: 95%;" class="mayusculas" required>
+										<option value="0">...</option>
+										<?php
+										$sql = "SELECT * FROM tipodocumento";
+										$result = mysqli_query($conexion, $sql);
+										$filas = mysqli_affected_rows($conexion);
+										if ($filas > 0) {
+											while ($fila = mysqli_fetch_assoc($result)) {
+												echo '<option value="' . $fila['documento'] . '">' . $fila['documento'] . '</option>';
+											}
+										}
+										?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>CODIGO UNICO DE IDENTIFICACION (CUI) </td>
+								<td colspan="2"><input type="text" id="numerocui" name="numerocui" style="color: #1d5288; width: 95%;" class="mayusculas"></td>
+							</tr>
 							<tr>
 								<td>NUMERO DE EXPEDIENTE DE LA CLINICA </td>
 								<td colspan="2"><input type="text" id="expedienteclinica" name="expedienteclinica" style="color: #1d5288; width: 95%;" class="mayusculas" required></td>
@@ -87,7 +91,7 @@ $(document).ready(function()
 								<td colspan="2"><input type="text" id="expedientevicit" name="expedientevicit" style="color: #1d5288; width: 95%;" class="mayusculas"></td>
 							</tr>
 
-		<!-- DATOS DE LA PERSONA -->
+							<!-- DATOS DE LA PERSONA -->
 							<tr>
 								<td>NOMBRES</td>
 								<td colspan="2"><input type="text" id="nombres" name="nombres" style="color: #1d5288; width: 95%;" class="mayusculas" required></td>
@@ -102,7 +106,7 @@ $(document).ready(function()
 							</tr>
 							<tr>
 								<td>EDAD EN A&Ntilde;OS CUMPLIDOS </td>
-								<td colspan="2"><input type="text" id="edad" name="edad" style="color: #1d5288; width: 95%;" disabled  required></td>
+								<td colspan="2"><input type="text" id="edad" name="edad" style="color: #1d5288; width: 95%;" disabled required></td>
 							</tr>
 							<tr>
 								<td>SEXO AL NACER </td>
@@ -120,16 +124,14 @@ $(document).ready(function()
 									<select id="etnia" name="etnia" style="width: 95%;" class="mayusculas" required>
 										<option value="0">...</option>
 										<?php
-											$sql = "SELECT * FROM etnia";
-											$result = mysqli_query($conexion, $sql);
-											$filas = mysqli_affected_rows($conexion);
-											if($filas > 0)
-												{
-													while($fila = mysqli_fetch_assoc($result))
-														{
-															echo '<option value="' . $fila['etnia'] . '">' . $fila['etnia'] . '</option>';
-														}
-												}
+										$sql = "SELECT * FROM etnia";
+										$result = mysqli_query($conexion, $sql);
+										$filas = mysqli_affected_rows($conexion);
+										if ($filas > 0) {
+											while ($fila = mysqli_fetch_assoc($result)) {
+												echo '<option value="' . $fila['etnia'] . '">' . $fila['etnia'] . '</option>';
+											}
+										}
 										?>
 									</select>
 								</td>
@@ -140,16 +142,14 @@ $(document).ready(function()
 									<select id="escolaridad" name="escolaridad" style="width: 95%;" class="mayusculas" required>
 										<option value="0">...</option>
 										<?php
-											$sql = "SELECT * FROM escolaridad";
-											$result = mysqli_query($conexion, $sql);
-											$filas = mysqli_affected_rows($conexion);
-											if($filas > 0)
-												{
-													while($fila = mysqli_fetch_assoc($result))
-														{
-															echo '<option value="' . $fila['escolaridad'] . '">' . $fila['escolaridad'] . '</option>';
-														}
-												}
+										$sql = "SELECT * FROM escolaridad";
+										$result = mysqli_query($conexion, $sql);
+										$filas = mysqli_affected_rows($conexion);
+										if ($filas > 0) {
+											while ($fila = mysqli_fetch_assoc($result)) {
+												echo '<option value="' . $fila['escolaridad'] . '">' . $fila['escolaridad'] . '</option>';
+											}
+										}
 										?>
 									</select>
 								</td>
@@ -158,23 +158,21 @@ $(document).ready(function()
 								<td>CODIGO CONSTRUIDO </td>
 								<td colspan="2"><input type="text" id="cuiconstruido" name="cuiconstruido" onfocus="ConstruirCUI();" style="color: #1d5288; width: 95%;" class="mayusculas" required readonly></td>
 							</tr>
-		<!-- DATOS GEOGRAFICOS DE NACIMIENTO -->
+							<!-- DATOS GEOGRAFICOS DE NACIMIENTO -->
 							<tr>
 								<td>PAIS DE NACIMIENTO </td>
 								<td colspan="2">
 									<select id="paisnacimiento" name="paisnacimiento" style="width: 95%;" class="mayusculas" onchange="LlenarComboDepartamento();" required>
 										<option value="0">...</option>
 										<?php
-											$sql = "SELECT * FROM paises ORDER BY codigo ASC";
-											$result = mysqli_query($conexion, $sql);
-											$filas = mysqli_affected_rows($conexion);
-											if($filas > 0)
-												{
-													while($fila = mysqli_fetch_assoc($result))
-														{
-															echo '<option value="' . $fila['codigo'] . '">' . $fila['pais'] . '</option>';
-														}
-												}
+										$sql = "SELECT * FROM paises ORDER BY codigo ASC";
+										$result = mysqli_query($conexion, $sql);
+										$filas = mysqli_affected_rows($conexion);
+										if ($filas > 0) {
+											while ($fila = mysqli_fetch_assoc($result)) {
+												echo '<option value="' . $fila['codigo'] . '">' . $fila['pais'] . '</option>';
+											}
+										}
 										?>
 									</select>
 								</td>
@@ -194,23 +192,21 @@ $(document).ready(function()
 
 
 
-		<!-- DATOS GEOGRAFICOS DE RESIDENCIA -->
+							<!-- DATOS GEOGRAFICOS DE RESIDENCIA -->
 							<tr>
 								<td>PAIS DE RESIDENCIA </td>
 								<td colspan="2">
 									<select id="paisresidencia" name="paisresidencia" style="width: 95%;" class="mayusculas" onchange="LlenarComboDepartamento2();" required>
 										<option value="0">...</option>
 										<?php
-											$sql = "SELECT * FROM paises ORDER BY codigo ASC";
-											$result = mysqli_query($conexion, $sql);
-											$filas = mysqli_affected_rows($conexion);
-											if($filas > 0)
-												{
-													while($fila = mysqli_fetch_assoc($result))
-														{
-															echo '<option value="' . $fila['codigo'] . '">' . $fila['pais'] . '</option>';
-														}
-												}
+										$sql = "SELECT * FROM paises ORDER BY codigo ASC";
+										$result = mysqli_query($conexion, $sql);
+										$filas = mysqli_affected_rows($conexion);
+										if ($filas > 0) {
+											while ($fila = mysqli_fetch_assoc($result)) {
+												echo '<option value="' . $fila['codigo'] . '">' . $fila['pais'] . '</option>';
+											}
+										}
 										?>
 									</select>
 								</td>
@@ -252,16 +248,14 @@ $(document).ready(function()
 									<select id="poblacion" name="poblacion" style="width: 95%;" class="mayusculas" required>
 										<option value="0">...</option>
 										<?php
-											$sql = "SELECT * FROM tipopoblacion";
-											$result = mysqli_query($conexion, $sql);
-											$filas = mysqli_affected_rows($conexion);
-											if($filas > 0)
-												{
-													while($fila = mysqli_fetch_assoc($result))
-														{
-															echo '<option value="' . $fila['poblacion'] . '">' . $fila['poblacion'] . '</option>';
-														}
-												}
+										$sql = "SELECT * FROM tipopoblacion";
+										$result = mysqli_query($conexion, $sql);
+										$filas = mysqli_affected_rows($conexion);
+										if ($filas > 0) {
+											while ($fila = mysqli_fetch_assoc($result)) {
+												echo '<option value="' . $fila['poblacion'] . '">' . $fila['poblacion'] . '</option>';
+											}
+										}
 										?>
 									</select>
 								</td>
@@ -272,16 +266,14 @@ $(document).ready(function()
 									<select id="orientacion" name="orientacion" style="width: 95%;" class="mayusculas" required>
 										<option value="0">...</option>
 										<?php
-											$sql = "SELECT * FROM orientacionsexual ORDER BY orientacion ASC";
-											$result = mysqli_query($conexion, $sql);
-											$filas = mysqli_affected_rows($conexion);
-											if($filas > 0)
-												{
-													while($fila = mysqli_fetch_assoc($result))
-														{
-															echo '<option value="' . $fila['orientacion'] . '">' . $fila['orientacion'] . '</option>';
-														}
-												}
+										$sql = "SELECT * FROM orientacionsexual ORDER BY orientacion ASC";
+										$result = mysqli_query($conexion, $sql);
+										$filas = mysqli_affected_rows($conexion);
+										if ($filas > 0) {
+											while ($fila = mysqli_fetch_assoc($result)) {
+												echo '<option value="' . $fila['orientacion'] . '">' . $fila['orientacion'] . '</option>';
+											}
+										}
 										?>
 									</select>
 								</td>
@@ -292,31 +284,72 @@ $(document).ready(function()
 									<select id="genero" name="genero" style="width: 95%;" class="mayusculas" required>
 										<option value="0">...</option>
 										<?php
-											$sql = "SELECT * FROM identidadgenero ORDER BY genero ASC";
-											$result = mysqli_query($conexion, $sql);
-											$filas = mysqli_affected_rows($conexion);
-											if($filas > 0)
-												{
-													while($fila = mysqli_fetch_assoc($result))
-														{
-															echo '<option value="' . $fila['genero'] . '">' . $fila['genero'] . '</option>';
-														}
-												}
+										$sql = "SELECT * FROM identidadgenero ORDER BY genero ASC";
+										$result = mysqli_query($conexion, $sql);
+										$filas = mysqli_affected_rows($conexion);
+										if ($filas > 0) {
+											while ($fila = mysqli_fetch_assoc($result)) {
+												echo '<option value="' . $fila['genero'] . '">' . $fila['genero'] . '</option>';
+											}
+										}
 										?>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Usuario ofertado a PrEP </td>
+								<td colspan="2">
+									<select name="oferta" id="oferta" style="width: 50%;">
+										<option value="">......</option>
+										<option value="0">No</option>
+										<option value="1">Si</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Usuario acepta PrEP </td>
+								<td colspan="2">
+									<select name="acepta" id="acepta" style="width: 50%;">
+										<option value="">......</option>
+										<option value="0">No</option>
+										<option value="1">Si</option>
+									</select>
+								</td>
+
+							</tr>
+							<tr>
+								<td>Se autoriza el inicio/continuación de PrEP </td>
+								<td colspan="2">
+									<select name="autoriza" id="autoriza" style="width: 50%;">
+										<option value="">......</option>
+										<option value="0">No</option>
+										<option value="1">Si</option>
+									</select>
+								</td>
+							</tr>
+							<tr>
+								<td>Esquema: </td>
+								<td colspan="2">
+									<select name="esquema" id="esquema" style="width: 50%;">
+										<option value="">......</option>
+										<option value="Prep Diaria">Prep Diaria</option>
+										<option value="Prep a demanada">Prep a demanada</option>
+										<option value="No aplica">No aplica</option>
 									</select>
 								</td>
 							</tr>
 							<input type="hidden" id="estado" name="estado" value="ACTIVO">
 
-<!-- BOTONES -->
+							<!-- BOTONES -->
 							<tr>
 								<?php
-									if($_SESSION['usuarios'] == "SI")
-									{
+								if ($_SESSION['usuarios'] == "SI") {
 								?>
-										<td colspan="3"><center><input type="submit" id="guardar" name="guardar" value="GUARDAR" class="btn btn-info" style="width: 75%; color: #000;"></center></td>
+									<td colspan="3">
+										<center><input type="submit" id="guardar" name="guardar" value="GUARDAR" class="btn btn-info" style="width: 75%; color: #000;"></center>
+									</td>
 								<?PHP
-									}
+								}
 								?>
 
 							</tr>
@@ -326,19 +359,25 @@ $(document).ready(function()
 			</div>
 		</div>
 
-<!-- *** COLUMNA DERECHA ** -->
+		<!-- *** COLUMNA DERECHA ** -->
 		<div class="col-md-5">
 			<div class="contenedor02">
-<!-- HISTORIAL DE CITAS -->
-				<table  class="colapsada sinbordes zebra_azul table table-bordered" style="width: 100%; margin-top: 5px;">
+				<!-- HISTORIAL DE CITAS -->
+				<table class="colapsada sinbordes zebra_azul table table-bordered" style="width: 100%; margin-top: 5px;">
 					<thead>
 						<tr>
 							<th colspan="3" style="width: 50%;">HISTORIAL DE CITAS</th>
 						</tr>
 						<tr>
-							<th><center>FECHA</center></th>
-							<th><center>ASISTIO</center></th>
-							<th><center>ORGANIZACION</center></th>
+							<th>
+								<center>FECHA</center>
+							</th>
+							<th>
+								<center>ASISTIO</center>
+							</th>
+							<th>
+								<center>ORGANIZACION</center>
+							</th>
 						</tr>
 					</thead>
 					<tbody id="cuerpotablacitas">
@@ -346,60 +385,60 @@ $(document).ready(function()
 				</table>
 
 				<br><br><br>
-<!-- REGISTRAR PROXIMA CITA -->
+				<!-- REGISTRAR PROXIMA CITA -->
 				<form id="frmproximacita" name="frmproximacita" method="POST" action="javascript: GuardarNuevaCita();"></form>
-					<table  class="colapsada sinbordes zebra_azul table table-bordered" style="width: 100%; margin-top: 5px;">
-						<thead>
-							<tr>
-								<th colspan="2" style="width: 50%;"></th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr>
-								<?php
-									if($_SESSION['laboratorios'] == "SI")
-									{
-								?>
-										<td colspan="2"><center><input type="button" name="registruusuario" id="registruusuario" class="btn btn-info" value="REGISTRO DE LABORATORIOS" onclick='CargarExpediente(`2`,`1`)' style="color: #000;"></center></td>
-								<?php
-									}
-								?>
+				<table class="colapsada sinbordes zebra_azul table table-bordered" style="width: 100%; margin-top: 5px;">
+					<thead>
+						<tr>
+							<th colspan="2" style="width: 50%;"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<?php
+							if ($_SESSION['laboratorios'] == "SI") {
+							?>
+								<td colspan="2">
+									<center><input type="button" name="registruusuario" id="registruusuario" class="btn btn-info" value="REGISTRO DE LABORATORIOS" onclick='CargarExpediente(`2`,`1`)' style="color: #000;"></center>
+								</td>
+							<?php
+							}
+							?>
 
-							</tr>
-						</tbody>
-					</table>
+						</tr>
+					</tbody>
+				</table>
 				</form>
 			</div>
 		</div>
 	</div>
 	<script type="text/javascript">
-	function Edad(FechaNacimiento) {
-	var fechaNace = new Date(FechaNacimiento);
-	var fechaActual = new Date()
-	var mes = fechaActual.getMonth();
-	var dia = fechaActual.getDate();
-	var año = fechaActual.getFullYear();
-	fechaActual.setDate(dia);
-	fechaActual.setMonth(mes);
-	fechaActual.setFullYear(año);
-	edad = Math.floor(((fechaActual - fechaNace) / (1000 * 60 * 60 * 24) / 365));
-	return edad;
-	}
-
-    function calcularanio(){
-    var nacimiento = document.getElementById('fechanacimiento').value;
-    var calculado = Edad(nacimiento);
-		if(calculado < 18) {
-			document.getElementById('edad').value = "Menor de edad";
-		} else if(calculado > 100){
-			document.getElementById('edad').value = "Edad fuera de rango";
-		} else {
-			document.getElementById('edad').value = calculado;
+		function Edad(FechaNacimiento) {
+			var fechaNace = new Date(FechaNacimiento);
+			var fechaActual = new Date()
+			var mes = fechaActual.getMonth();
+			var dia = fechaActual.getDate();
+			var año = fechaActual.getFullYear();
+			fechaActual.setDate(dia);
+			fechaActual.setMonth(mes);
+			fechaActual.setFullYear(año);
+			edad = Math.floor(((fechaActual - fechaNace) / (1000 * 60 * 60 * 24) / 365));
+			return edad;
 		}
 
+		function calcularanio() {
+			var nacimiento = document.getElementById('fechanacimiento').value;
+			var calculado = Edad(nacimiento);
+			if (calculado < 18) {
+				document.getElementById('edad').value = "Menor de edad";
+			} else if (calculado > 100) {
+				document.getElementById('edad').value = "Edad fuera de rango";
+			} else {
+				document.getElementById('edad').value = calculado;
+			}
 
-    }
 
+		}
 	</script>
 	<br><br><br><br>
 </div>

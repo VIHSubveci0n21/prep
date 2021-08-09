@@ -1,7 +1,7 @@
 /* RESETEO DE ESTILOS PARA TODAS LAS PAGINAS */
 *{margin: 0; padding: 0; list-style: none; text-decoration: none; box-sizing: border-box; border: none; outline: none; font-family: LiberationSans, sans-serif; line-height: 125%;}
 
-html, body {background-color: #1d5288; color: white; font-size: 14px; zoom: 80%;}
+html, body {background-color: #1d5288; color: white;}
 span.glyphicon {margin-right: 5px;}
 
 

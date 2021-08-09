@@ -34,18 +34,19 @@
 	</div>
 
 <!-- CONTENIDO DE LA TABLA -->
-<div class="contenedor02">
-	<table id="ListadoConsultorias" name="ListadoConsultorias" class="colapsada sinbordes table table-bordered" style="font-size:12px;">
+
+	<table id="ListadoConsultorias" name="ListadoConsultorias" class="table-bordered" style="font-size:12px;">
 		<thead>
 			<tr>
-				<th style="width: 10%;"># EXPEDIENTE</th>
-				<th style="width: 20%;">NOMBRES</th>
-				<th style="width: 20%;">APELLIDOS</th>
-				<th style="width: 10%;">DPI</th>
-				<th style="width: 10%;">EDAD</th>
-				<th style="width: 10%;">TELEFONO</th>
-				<th style="width: 20%;">CORREO</th>
-				<th colspan="3" style="width: 05%;">ACCION</th>
+				<th style="width: 8%;"># EXPEDIENTE</th>
+				<th style="width: 15%;">NOMBRES</th>
+				<th style="width: 15%;">APELLIDOS</th>
+				<th style="width: 8%;">DPI</th>
+				<th style="width: 5%;">EDAD</th>
+				<th style="width: 5%;">TELEFONO</th>
+				<th style="width: 15%;">CORREO</th>
+				<th style="width: 10%;">ESQUEMA</th>
+				<th colspan="3" style="width: 10%;">ACCION</th>
 			</tr>
 		</thead>
 
@@ -69,6 +70,7 @@
 											<td><center>" . $fila['edad'] .              "</center></td>
 											<td><center>" . $fila['contactotelefono'] .  "</center></td>
 											<td>" .         $fila['contactocorreo'] .    "</td>
+											<td>" .         $fila['esquema'] .    "</td>
 									";
 								if($_SESSION['registros'] == "SI")
 									{
@@ -90,8 +92,6 @@
 	</table>
 
 	<br><br><br>
-
-</div>
 
 
 

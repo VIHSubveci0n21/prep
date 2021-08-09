@@ -185,6 +185,7 @@ if($accion == "LlenarListadoCitas")
 
 
 if($accion == "GuardarDatosUsuarioClinica") {
+
 		$clinica 					= $_GET['clinica'];
 		$tipousuario 			= $_GET['tipousuario'];
 		$expedienteclinica = $_GET['expedienteclinica'];
@@ -214,12 +215,14 @@ if($accion == "GuardarDatosUsuarioClinica") {
 		$genero 					= $_GET['genero'];
 		$estado 					= $_GET['estado'];
 		$subreceptor			= $_GET['subreceptor'];
+		$oferta						= $_GET['oferta'];
+		$acepta						= $_GET['acepta'];
+		$autoriza					= $_GET['autoriza'];
+		$esquema					= $_GET['esquema'];
 
 		$hoy = date('Y-m-d');
 
-
-		$consulta = mysqli_query($conexion, "SELECT * FROM generales WHERE documento = '$numerocui'");
-		$resultado = mysqli_num_rows($consulta);
+		$resultado = mysqli_num_rows(mysqli_query($conexion, "SELECT * FROM generales WHERE documento = '$numerocui'"));
 		if($resultado > 0) {
 			echo "Existe";
 		}
@@ -258,6 +261,11 @@ if($accion == "GuardarDatosUsuarioClinica") {
 							genero              = '$genero',
 							estado              = '$estado',
 							subreceptor					= '$subreceptor'
+							oferta							= '$oferta'
+							acepta							= '$acepta'
+							autoriza						=	'$autoriza'
+							esquema							= '$esquema'
+
 						WHERE expedienteclinica = '$expedienteclinica'
 					";
 				$result2 = mysqli_query($conexion, $sql2);
@@ -300,7 +308,11 @@ if($accion == "GuardarDatosUsuarioClinica") {
 							genero              = '$genero',
 							estado              = '$estado',
 							fecharegistro       = '$hoy',
-							subreceptor					= '$subreceptor'
+							subreceptor					= '$subreceptor',
+							oferta							= '$oferta',
+							acepta							= '$acepta',
+							autoriza						= '$autoriza',
+							esquema							= '$esquema'
 						WHERE expedienteclinica = '$expedienteclinica'
 					";
 				$result2 = mysqli_query($conexion, $sql2);
