@@ -87,7 +87,7 @@ include_once('../../conexion.php');
 								<td colspan="2"><input type="text" id="expedienteclinica" name="expedienteclinica" style="color: #1d5288; width: 95%;" class="mayusculas" required></td>
 							</tr>
 							<tr>
-								<td>NUMERO DE EXPEDIENTE DE LA VICIT </td>
+								<td>NUMERO DE EXPEDIENTE DE LA VICITS </td>
 								<td colspan="2"><input type="text" id="expedientevicit" name="expedientevicit" style="color: #1d5288; width: 95%;" class="mayusculas"></td>
 							</tr>
 
@@ -297,7 +297,7 @@ include_once('../../conexion.php');
 								</td>
 							</tr>
 							<tr>
-								<td>Usuario ofertado a PrEP </td>
+								<td>SE OFERTO PREP A USUARIO</td>
 								<td colspan="2">
 									<select name="oferta" id="oferta" style="width: 50%;">
 										<option value="">......</option>
@@ -307,33 +307,35 @@ include_once('../../conexion.php');
 								</td>
 							</tr>
 							<tr>
-								<td>Usuario acepta PrEP </td>
+								<td>USUARIO ACEPTA PrEP </td>
 								<td colspan="2">
 									<select name="acepta" id="acepta" style="width: 50%;">
 										<option value="">......</option>
 										<option value="0">No</option>
 										<option value="1">Si</option>
+										<option value="2">No aplica</option>
 									</select>
 								</td>
 
 							</tr>
 							<tr>
-								<td>Se autoriza el inicio/continuación de PrEP </td>
+								<td>SE AUTORIZA EL INICIO/CONTINUACION DE PREP</td>
 								<td colspan="2">
 									<select name="autoriza" id="autoriza" style="width: 50%;">
 										<option value="">......</option>
 										<option value="0">No</option>
 										<option value="1">Si</option>
+										<option value="2">No aplica</option>
 									</select>
 								</td>
 							</tr>
 							<tr>
-								<td>Esquema: </td>
+								<td>ESQUEMA:</td>
 								<td colspan="2">
 									<select name="esquema" id="esquema" style="width: 50%;">
 										<option value="">......</option>
 										<option value="Prep Diaria">Prep Diaria</option>
-										<option value="Prep a demanada">Prep a demanada</option>
+										<option value="Prep a demanda">Prep a demanda</option>
 										<option value="No aplica">No aplica</option>
 									</select>
 								</td>

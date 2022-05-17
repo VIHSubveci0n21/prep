@@ -4,12 +4,15 @@
 	session_start();
 
 	include_once('../../conexion.php');
+	$organizacion = $_SESSION['subreceptor']
 ?>
 
 <div class="registros">
 
 <!-- TITULO DE LA PAGINA -->
-	<div class="contenedor02"><center><h1>LISTADO DE PACIENTES REGISTRADOS</h1></center></div>
+<h1 class="text-center"><?php echo $organizacion; ?></h1>
+	<div class="contenedor02">
+		<h3 class="text-center">LISTADO DE PACIENTES REGISTRADOS</h3></div>
 <?php include ('../../paginas/modal/modalBusqueda.php'); ?>
 <!-- FILTROS DE LA TABLA -->
 	<div class="contenedor02">

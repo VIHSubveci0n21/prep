@@ -290,7 +290,7 @@
                                     <td><label for="hora2">Hora : </label></td>
                                     <td><input type="time" name="hora2" id="hora2" class="form-control"></td>
                                 </tr>
-                                <input type="hidden" id="organizacion2" name="organizacion2" value="<?php echo $_SESSION['organizacion']; ?>">
+                               
                                 <input type="hidden" id="subreceptor2" name="subreceptor2" value="<?php echo $_SESSION['subreceptor']; ?>">
                                 <tr>
                                     <td colspan="2"><input type="submit" name="guardarcitausuario"

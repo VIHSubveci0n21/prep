@@ -219,6 +219,10 @@ function CargarDatosEnfrmgenerales(datos2) {
   }, 1000);
 
   document.getElementById('estado').value = registros[27];
+  document.getElementById('oferta').value = registros[28];
+  document.getElementById('acepta').value = registros[29];
+  document.getElementById('autoriza').value = registros[30];
+  document.getElementById('esquema').value = registros[31];
 
   LlenarListadoCitas(registros[2]);
 }
@@ -242,7 +246,6 @@ function LlenarComboDepartamento() {
 
   pais = document.getElementById('paisnacimiento').value;
 
-  if (pais == '1') {
 
     accion = "LlenarComboDepartamento";
 
@@ -254,7 +257,7 @@ function LlenarComboDepartamento() {
         $("#deptonacimiento").html(datos);
       }
     });
-  }
+  
 }
 
 function LlenarComboMunicipio() {
@@ -278,7 +281,6 @@ function LlenarComboDepartamento2() {
 
   pais = document.getElementById('paisresidencia').value;
 
-  if (pais == '1') {
 
     accion = "LlenarComboDepartamento";
 
@@ -290,7 +292,7 @@ function LlenarComboDepartamento2() {
         $("#deptoresidencia").html(datos);
       }
     });
-  }
+  
 }
 
 function LlenarComboMunicipio2() {
@@ -473,7 +475,6 @@ function NoAsistio() {
 }
 
 function GuardarNuevaCita() {
-  organizacion2 = document.getElementById('organizacion2').value;
   subreceptor2 = document.getElementById('subreceptor2').value;
   usuario2 = document.getElementById('usuario2').value;
   fecha2 = document.getElementById('fecha2').value;
@@ -484,7 +485,7 @@ function GuardarNuevaCita() {
   $.ajax({
     type: "GET",
     url: "acciones.php",
-    data: { accion: accion, usuario2: usuario2, fecha2: fecha2, hora2: hora2, organizacion2: organizacion2, subreceptor2: subreceptor2 },
+    data: { accion: accion, usuario2: usuario2, fecha2: fecha2, hora2: hora2, subreceptor2: subreceptor2 },
     success: function (datos) {
       $("#NuevaCita").modal('hide');
       setTimeout(function () { CargarPagina('#C_Secundario', 'paginas/calendario/calendario.php'); }, 1000);
@@ -568,6 +569,7 @@ function GuardarResultadosLaboratorio() {
   var rprSifr = document.getElementById('rprSifr').value;
   var itsr = $("#itsr").val();
   var notas = document.getElementById('notas').value;
+  var organizacion = document.getElementById('organizacion').value;
   console.log(itsr);
   accion = "GuardarResultadosLaboratorio";
 
@@ -589,7 +591,8 @@ function GuardarResultadosLaboratorio() {
       hepatitiscr: hepatitiscr,
       rprSifr: rprSifr,
       itsr: itsr,
-      notas: notas
+      notas: notas,
+	  organizacion: organizacion
     },
     success: function (datos) {
       if (datos == "Exito1") { alertas("1", "DATOS ACTUALIZADOS EXITOSAMENTE"); }
@@ -617,7 +620,6 @@ function BuscarUsuarioSistema() {
       success: function (datos) {
         resultado = datos.split('*');
         document.getElementById('id').value = resultado['0'];
-        document.getElementById('organizacion').value = resultado['1'];
         document.getElementById('nombre').value = resultado['2'];
         document.getElementById('ncompleto').value = resultado['3'];
         document.getElementById('password1').value = "";
@@ -638,8 +640,7 @@ function BuscarUsuarioSistema() {
 
 function GuardarUsuariosSistema() {
 
-  id = document.getElementById('id').value;
-  organizacion = document.getElementById('organizacion').value;
+  id = document.getElementById('id').value; 
   nombre = document.getElementById('nombre').value;
   ncompleto = document.getElementById('ncompleto').value;
   password1 = document.getElementById('password1').value;
@@ -671,7 +672,6 @@ function GuardarUsuariosSistema() {
       data: {
         accion: accion,
         id: id,
-        organizacion: organizacion,
         nombre: nombre,
         ncompleto: ncompleto,
         password1: password1,

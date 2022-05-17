@@ -59,7 +59,7 @@
                         <tr>
                           <td>".$filah['fechacita'].   "</td>
                           <td>".$filah['hora'].   "</td>
-                          <td>".$filah['organizacion'].   "</td>
+                          <td>".$filah['subreceptor'].   "</td>
                         </tr>
                         ";
                       }

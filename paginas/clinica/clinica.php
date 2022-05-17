@@ -4,7 +4,7 @@
     include_once('../../conexion.php');
     header('Content-Type: text/html; charset=UTF-8');
     date_default_timezone_set("America/Guatemala");
-
+	$organizacion = $_SESSION['subreceptor'];
 	if(isset($_POST['expediente'])){$expediente = $_POST['expediente'];}
 	if(isset($_GET['expediente'])){$expediente = $_GET['expediente'];}
 ?>
@@ -70,14 +70,7 @@
 								</thead>
 								<tbody>
 									<?php
-										if($_SESSION['organizacion'] == 'INCAP')
-											{
-												$sql = "SELECT expedienteclinica AS expediente, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, frascos AS frascos, rcreatinina AS creatinina, rvih AS vih, rsifilis AS sifilis, rhbb AS hepb, rhbc AS hepc, rits AS its, observaciones AS observaciones, organizacion AS organizacion FROM diagnosticos WHERE expedienteclinica = '$expediente' ORDER BY CONCAT(SUBSTRING_INDEX(fecha , '/', -1),SUBSTRING_INDEX(SUBSTRING_INDEX(fecha , '/', 2), '/', -1),SUBSTRING_INDEX(fecha , '/', 1)) ASC";
-											}
-										else
-											{
-												$sql = "SELECT expedienteclinica AS expediente, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, frascos AS frascos, rcreatinina AS creatinina, rvih AS vih, rsifilis AS sifilis, rhbb AS hepb, rhbc AS hepc, rits AS its, observaciones AS observaciones, organizacion AS organizacion FROM diagnosticos WHERE expedienteclinica = '$expediente' AND organizacion = '" . $_SESSION['organizacion'] . "' ORDER BY CONCAT(SUBSTRING_INDEX(fecha , '/', -1),SUBSTRING_INDEX(SUBSTRING_INDEX(fecha , '/', 2), '/', -1),SUBSTRING_INDEX(fecha , '/', 1)) ASC";
-											}
+$sql = "SELECT expedienteclinica AS expediente, DATE_FORMAT(fecha, '%d-%m-%Y') AS fecha, frascos AS frascos, rcreatinina AS creatinina, rvih AS vih, rsifilis AS sifilis, rhbb AS hepb, rhbc AS hepc, rits AS its, observaciones AS observaciones FROM diagnosticos WHERE expedienteclinica = '$expediente'";
 										$result = mysqli_query($conexion, $sql);
 										$filas = mysqli_affected_rows($conexion);
 										if($filas > 0)
@@ -161,7 +154,8 @@
                 <div class="modal-body">
                     <div id="DescripcionEvento"></div>
                     <form  name="resultadoslab" id="resultadoslab" method="GET" action="javascript: GuardarResultadosLaboratorio();">
-                          <div class="form-group col-sm-4">
+                           <input type="hidden" name="organizacion", id="organizacion" value="<?php echo $organizacion?>">
+						  <div class="form-group col-sm-4">
                             <label for="">Expediente:</label>
                             <input type="text" class="form-control " name="expedienter" id="expedienter" value="<?php echo $expediente; ?>" readonly>
                           </div>
@@ -240,8 +234,8 @@
                           </div>
 
                       <div class="form-group col-sm-6">
-                        <label for="">Diagnostico de ITS:</label>
-                        <select name="itsr[]" multiple="multiple" id="itsr">
+                        <label for="">Diagnosticos:</label>
+                        <select name="itsr[]" multiple="multiple" id="itsr" required>
                           <?php
                             $sql = "SELECT * FROM diagitslab ORDER BY diagnostico ASC";
                             $result = mysqli_query($conexion, $sql);

@@ -43,16 +43,10 @@
 								?>
 							</select>
 						</td>
-					</tr>
+					</tr> 
 					<tr>
 						<td>IDENTIFICADOR</td>
 						<td><input type="text" name="id" id="id" class="form-control" readonly></td>
-					</tr>
-					<tr>
-						<td>NOMBRE DE LA ORGANIZACION</td>
-						<td>
-							<input type="text" name="organizacion" id="organizacion" class="form-control" placeholder="INCAP"  required>
-						</td>
 					</tr>
           <tr>
             <td>SUBRECEPTOR</td>
@@ -65,7 +59,7 @@
                 $filas = mysqli_affected_rows($conexion);
                 if($filas > 0) {
                   while($fila = mysqli_fetch_assoc($result)) {
-                    echo '<option value="' . $fila['subreceptor'] . '">' . $fila['subreceptor'] . '</option>';
+                    echo '<option value="' . $fila['codigo'] . '">' . $fila['subreceptor'] . '</option>';
                     }
                   }
                 ?>
