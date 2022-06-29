@@ -43,6 +43,10 @@ include_once('../../conexion.php');
 						<tbody>
 
 							<input type="hidden" id="subreceptor" name="subreceptor" value="<?php echo $_SESSION['subreceptor']; ?>">
+							<tr>
+								<td>FECHA DE REGISTRO DE PACIENTE </td>
+								<td colspan="2"><input type="date" id="registro" name="registro" class="mayusculas" required></td>
+							</tr>
 							<!-- DATOS DE LA CLINICA -->
 							<tr>
 								<td>CLINICA EN LA QUE ES REGISTRADO </td>
@@ -414,6 +418,7 @@ include_once('../../conexion.php');
 			</div>
 		</div>
 	</div>
+
 	<script type="text/javascript">
 		function Edad(FechaNacimiento) {
 			var fechaNace = new Date(FechaNacimiento);
@@ -438,7 +443,6 @@ include_once('../../conexion.php');
 			} else {
 				document.getElementById('edad').value = calculado;
 			}
-
 
 		}
 	</script>

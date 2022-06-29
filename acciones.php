@@ -39,7 +39,7 @@ if($accion == "ValidarUsuario") {
 						$_SESSION['configuracion'] = $fila['configuracion'];
 						$_SESSION['usuarios']      = $fila['editarusuario'];
 						$_SESSION['estado']        = $fila['estado'];
-						$_SESSION['subreceptor']	 = $fila['subreceptor'];
+						$_SESSION['subreceptor']   = $fila['subreceptor'];
 
 				if(password_verify($password, $fila['password'])) {
 								echo "Exito";
@@ -54,23 +54,6 @@ if($accion == "ValidarUsuario") {
 				echo "Error1";
 			}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* *********************************************************************************************************** */
@@ -167,7 +150,8 @@ if($accion == "LlenarListadoCitas")
 	{
 		$expediente = $_GET['expediente'];
 
-		$sql = "SELECT * FROM citas WHERE expedienteclinica = '$expediente' ORDER BY CONCAT(SUBSTRING_INDEX(fechacita , '/', -1),SUBSTRING_INDEX(SUBSTRING_INDEX(fechacita , '/', 2), '/', -1),SUBSTRING_INDEX(fechacita , '/', 1)) ASC";
+		$sql = "SELECT * FROM citas WHERE expedienteclinica = '$expediente' 
+		ORDER BY CONCAT(SUBSTRING_INDEX(fechacita , '/', -1),SUBSTRING_INDEX(SUBSTRING_INDEX(fechacita , '/', 2), '/', -1),SUBSTRING_INDEX(fechacita , '/', 1)) ASC";
 		$result = mysqli_query($conexion, $sql);
 		$filas = mysqli_affected_rows($conexion);
 		if($filas > 0)
@@ -189,39 +173,40 @@ if($accion == "LlenarListadoCitas")
 
 if($accion == "GuardarDatosUsuarioClinica") {
 
-		$clinica 					= $_GET['clinica'];
-		$tipousuario 			= $_GET['tipousuario'];
-		$expedienteclinica = $_GET['expedienteclinica'];
+		$clinica 			= $_GET['clinica'];
+		$registro 			= date_format(date_create($_GET['registro']), 'Y-m-d');
+		$tipousuario 		= $_GET['tipousuario'];
+		$expedienteclinica 	= $_GET['expedienteclinica'];
 		$expedientevicit 	= $_GET['expedientevicit'];
-		$nombres 					= $_GET['nombres'];
-		$apellidos 				= $_GET['apellidos'];
+		$nombres 			= $_GET['nombres'];
+		$apellidos 			= $_GET['apellidos'];
 		$fechanacimiento 	= date_format(date_create($_GET['fechanacimiento']), 'Y-m-d');
-		$edad 						= $_GET['edad'];
-		$sexonacer 				= $_GET['sexonacer'];
-		$etnia 						= $_GET['etnia'];
-		$escolaridad 			= $_GET['escolaridad'];
+		$edad 				= $_GET['edad'];
+		$sexonacer 			= $_GET['sexonacer'];
+		$etnia 				= $_GET['etnia'];
+		$escolaridad 		= $_GET['escolaridad'];
 		$paisnacimiento 	= $_GET['paisnacimiento'];
 		$deptonacimiento 	= $_GET['deptonacimiento'];
 		$muninacimiento 	= $_GET['muninacimiento'];
 		$tipodocumento 		= $_GET['tipodocumento'];
-		$numerocui 				= $_GET['numerocui'];
+		$numerocui 			= $_GET['numerocui'];
 		$cuiconstruido 		= $_GET['cuiconstruido'];
 		$paisresidencia 	= $_GET['paisresidencia'];
 		$deptoresidencia 	= $_GET['deptoresidencia'];
 		$muniresidencia 	= $_GET['muniresidencia'];
-		$direccion 				= $_GET['direccion'];
-		$telefono 				= $_GET['telefono'];
-		$email 						= $_GET['email'];
-		$otromedio 				= $_GET['otromedio'];
-		$poblacion 				= $_GET['poblacion'];
-		$orientacion 			= $_GET['orientacion'];
-		$genero 					= $_GET['genero'];
-		$estado 					= $_GET['estado'];
-		$subreceptor			= $_GET['subreceptor'];
-		$oferta						= $_GET['oferta'];
-		$acepta						= $_GET['acepta'];
-		$autoriza					= $_GET['autoriza'];
-		$esquema					= $_GET['esquema'];
+		$direccion 			= $_GET['direccion'];
+		$telefono 			= $_GET['telefono'];
+		$email 				= $_GET['email'];
+		$otromedio 			= $_GET['otromedio'];
+		$poblacion 			= $_GET['poblacion'];
+		$orientacion 		= $_GET['orientacion'];
+		$genero 			= $_GET['genero'];
+		$estado 			= $_GET['estado'];
+		$subreceptor		= $_GET['subreceptor'];
+		$oferta				= $_GET['oferta'];
+		$acepta				= $_GET['acepta'];
+		$autoriza			= $_GET['autoriza'];
+		$esquema			= $_GET['esquema'];
 
 		$hoy = date('Y-m-d');
 
@@ -236,6 +221,7 @@ if($accion == "GuardarDatosUsuarioClinica") {
 		if($filas1 > 0) {
 				$sql2 = "
 						UPDATE generales SET
+							registro			= '$registro',
 							clinica             = '$clinica',
 							tipousuario         = '$tipousuario',
 							expedientevicit     = '$expedientevicit',
@@ -264,12 +250,11 @@ if($accion == "GuardarDatosUsuarioClinica") {
 							genero              = '$genero',
 							estado              = '$estado',
 							fecharegistro       = '$hoy',
-							subreceptor					= '$subreceptor',
-							oferta							= '$oferta',
-							acepta							= '$acepta',
-							autoriza						= '$autoriza',
-							esquema							= '$esquema'
-
+							subreceptor			= '$subreceptor',
+							oferta				= '$oferta',
+							acepta				= '$acepta',
+							autoriza			= '$autoriza',
+							esquema				= '$esquema'
 						WHERE expedienteclinica = '$expedienteclinica'
 					";
 				$result2 = mysqli_query($conexion, $sql2);
@@ -284,6 +269,7 @@ if($accion == "GuardarDatosUsuarioClinica") {
 				$sql2 =
 					"
 						UPDATE generales SET
+							registro			= '$registro',
 							clinica             = '$clinica',
 							tipousuario         = '$tipousuario',
 							expedientevicit     = '$expedientevicit',
@@ -312,11 +298,11 @@ if($accion == "GuardarDatosUsuarioClinica") {
 							genero              = '$genero',
 							estado              = '$estado',
 							fecharegistro       = '$hoy',
-							subreceptor					= '$subreceptor',
-							oferta							= '$oferta',
-							acepta							= '$acepta',
-							autoriza						= '$autoriza',
-							esquema							= '$esquema'
+							subreceptor			= '$subreceptor',
+							oferta				= '$oferta',
+							acepta				= '$acepta',
+							autoriza			= '$autoriza',
+							esquema				= '$esquema'
 						WHERE expedienteclinica = '$expedienteclinica'
 					";
 				$result2 = mysqli_query($conexion, $sql2);
@@ -464,8 +450,8 @@ if($accion == "GuardarResultadosLaboratorio")	{
 						rhbb          = '$hepatitisbr',
 						rhbc          = '$hepatitiscr',
 						rits          = '$itsr',
-						filtradoGlom	= '$filtradoGlomr',
-						rprsifilis 		= '$rprSifr',
+						filtradoGlom  = '$filtradoGlomr',
+						rprsifilis 	  = '$rprSifr',
 						observaciones = '$notas'
 						WHERE expedienteclinica = '$expedienter' AND fecha = '$fechar'
 					";
@@ -543,7 +529,7 @@ if($accion == "GuardarUsuariosSistema")
 		$configuracion = $_GET['configuracion'];
 		$usuarios      = $_GET['usuarios'];
 		$estado        = $_GET['estado'];
-		$subreceptor	 = $_GET['subreceptor'];
+		$subreceptor   = $_GET['subreceptor'];
 
 		$sql1 = "SELECT * FROM usuarios WHERE id = $id";
 		$result1 = mysqli_query($conexion, $sql1);
@@ -566,7 +552,7 @@ if($accion == "GuardarUsuariosSistema")
 								configuracion = '$configuracion',
 								editarusuario = '$usuarios',
 								estado        = '$estado',
-								subreceptor		= '$subreceptor'
+								subreceptor	  = '$subreceptor'
 								WHERE id = $id
 							";
 					}
@@ -587,7 +573,7 @@ if($accion == "GuardarUsuariosSistema")
 								configuracion = '$configuracion',
 								editarusuario = '$usuarios',
 								estado        = '$estado',
-								subreceptor		= '$subreceptor'
+								subreceptor	  = '$subreceptor'
 								WHERE id = $id
 							";
 					}
@@ -605,33 +591,8 @@ if($accion == "GuardarUsuariosSistema")
 			}
 		else
 			{
-				$sql2 = "INSERT INTO
-					usuarios(
-						nombreusuario,
-						nombre,
-						password,
-						cargo,
-						registros,
-						citas,
-						laboratorios,
-						reportes,
-						configuracion,
-						editarusuario,
-						estado,
-					  subreceptor)
-					VALUES(
-						'$nombre',
-						'$ncompleto',
-						'$password1',
-						'$cargo',
-						'$registros',
-						'$citas',
-						'$laboratorios',
-						'$reportes',
-						'$configuracion',
-						'$usuarios',
-						'$estado',
-						'$subreceptor')";
+				$sql2 = "INSERT INTO usuarios(nombreusuario, nombre, password, cargo, registros, citas, laboratorios, reportes, configuracion, editarusuario, estado, subreceptor)
+					VALUES('$nombre', '$ncompleto', '$password1', '$cargo', '$registros', '$citas', '$laboratorios', '$reportes', '$configuracion', '$usuarios', '$estado', '$subreceptor')";
 				$result2 = mysqli_query($conexion, $sql2);
 				$filas2 = mysqli_affected_rows($conexion);
 				if($filas2 > 0)
@@ -708,77 +669,20 @@ if($accion == "BuscarRegistrosDatos")
 			{
 				while($fila = mysqli_fetch_assoc($result))
 					{
-						echo $fila['frascos'] . 		"*" .
-								 $fila['rcreatinina'] . "*" .
-								 $fila['rvih'] . 				"*" .
-								 $fila['rsifilis'] . 		"*" .
-								 $fila['rhbb'] . 				"*" .
-								 $fila['rhbc'] . 				"*" .
-								 $fila['rits'] . 				"*" .
-								 $fila['filtradoGlom'] ."*" .
-								 $fila['rprsifilis'] . 	"*" .
-								 $fila['observaciones'];
+						echo 
+							$fila['frascos'] . 		"*" .
+							$fila['rcreatinina'] . 	"*" .
+							$fila['rvih'] . 		"*" .
+							$fila['rsifilis'] . 	"*" .
+							$fila['rhbb'] . 		"*" .
+							$fila['rhbc'] . 		"*" .
+							$fila['rits'] . 		"*" .
+							$fila['filtradoGlom'] .	"*" .
+							$fila['rprsifilis'] . 	"*" .
+							$fila['observaciones'];
 					}
 			}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* *********************************************************************************************************** */
@@ -786,19 +690,19 @@ if($accion == "BuscarRegistrosDatos")
 /* *********************************************************************************************************** */
 if($accion == "GuardarPublicacion")
 	{
-		$codigo = $_GET['codigo'];
-		$categoria = $_GET['categoria'];
-		$consultoria = $_GET['consultoria'];
-		$carpeta = $_GET['carpeta'];
-		$publicacion = $_GET['publicacion'];
-		$fechainicio = date_format(date_create($_GET['fechainicio']), 'Y-m-d');
-		$fechafin = date_format(date_create($_GET['fechafin']), 'Y-m-d');
-		$partida = $_GET['partida'];
+		$codigo 		= $_GET['codigo'];
+		$categoria 		= $_GET['categoria'];
+		$consultoria 	= $_GET['consultoria'];
+		$carpeta 		= $_GET['carpeta'];
+		$publicacion 	= $_GET['publicacion'];
+		$fechainicio 	= date_format(date_create($_GET['fechainicio']), 'Y-m-d');
+		$fechafin 		= date_format(date_create($_GET['fechafin']), 'Y-m-d');
+		$partida 		= $_GET['partida'];
 		$linpresupuestaria = $_GET['linpresupuestaria'];
-		$monto = $_GET['monto'];
-		$publicado = $_GET['publicado'];
-		$adjudicado = $_GET['adjudicado'];
-		$finalizada = $_GET['finalizada'];
+		$monto 			= $_GET['monto'];
+		$publicado 		= $_GET['publicado'];
+		$adjudicado 	= $_GET['adjudicado'];
+		$finalizada 	= $_GET['finalizada'];
 
 		// BUSCA SI EL CODIGO Y EL NUMERO DE PUBLICACION YA EXISTE
 		$sql = "SELECT * FROM publicacion WHERE codigo = '$codigo'";
@@ -897,16 +801,6 @@ if($accion == 'BuscarPublicacion')
 	}
 
 
-
-
-
-
-
-
-
-
-
-
 /* --------------------------------------------------------------------------------------------------------------- */
 /* FUNCIONES PARA LA RECEPCIÓN Y CONTROL DE PROPUESTAS */
 /* --------------------------------------------------------------------------------------------------------------- */
@@ -990,17 +884,6 @@ if($accion == "GuardarDatosPropuestas")
 	}
 
 
-
-
-
-
-
-
-
-
-
-
-
 /* --------------------------------------------------------------------------------------------------------------- */
 /* FUNCIONES PARA LA PROGRAMACION DE REUNIONES */
 /* --------------------------------------------------------------------------------------------------------------- */
@@ -1063,83 +946,6 @@ if($accion == "GuardarDatosReunion")
 				echo "Error2";
 			}
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1221,8 +1027,5 @@ if($accion == "deshabilitar"){
 		}
 
 
-
-
 	clearstatcache();
 	mysqli_close($conexion);
-?>

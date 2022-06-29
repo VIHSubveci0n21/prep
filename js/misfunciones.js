@@ -247,17 +247,17 @@ function LlenarComboDepartamento() {
   pais = document.getElementById('paisnacimiento').value;
 
 
-    accion = "LlenarComboDepartamento";
+  accion = "LlenarComboDepartamento";
 
-    $.ajax({
-      type: "GET",
-      url: "acciones.php",
-      data: { accion: accion, pais: pais },
-      success: function (datos) {
-        $("#deptonacimiento").html(datos);
-      }
-    });
-  
+  $.ajax({
+    type: "GET",
+    url: "acciones.php",
+    data: { accion: accion, pais: pais },
+    success: function (datos) {
+      $("#deptonacimiento").html(datos);
+    }
+  });
+
 }
 
 function LlenarComboMunicipio() {
@@ -282,17 +282,17 @@ function LlenarComboDepartamento2() {
   pais = document.getElementById('paisresidencia').value;
 
 
-    accion = "LlenarComboDepartamento";
+  accion = "LlenarComboDepartamento";
 
-    $.ajax({
-      type: "GET",
-      url: "acciones.php",
-      data: { accion: accion, pais: pais },
-      success: function (datos) {
-        $("#deptoresidencia").html(datos);
-      }
-    });
-  
+  $.ajax({
+    type: "GET",
+    url: "acciones.php",
+    data: { accion: accion, pais: pais },
+    success: function (datos) {
+      $("#deptoresidencia").html(datos);
+    }
+  });
+
 }
 
 function LlenarComboMunicipio2() {
@@ -332,6 +332,7 @@ function GuardarDatosUsuarioClinica() {
   if (document.getElementById('clinicaprep').checked) { clinica = "PREP"; }
   if (document.getElementById('clinicapep').checked) { clinica = "PEP"; }
 
+  registro = document.getElementById('registro').value;
   tipousuario = document.getElementById('tipousuario').value;
   expedienteclinica = document.getElementById('expedienteclinica').value;
   expedientevicit = document.getElementById('expedientevicit').value;
@@ -373,6 +374,7 @@ function GuardarDatosUsuarioClinica() {
     url: "acciones.php",
     data: {
       accion: accion,
+      registro: registro,
       clinica: clinica,
       tipousuario: tipousuario,
       expedienteclinica: expedienteclinica,
@@ -406,7 +408,7 @@ function GuardarDatosUsuarioClinica() {
       acepta: acepta,
       autoriza: autoriza,
       esquema: esquema
-      
+
     },
     success: function (datos) {
       if (datos == "ExisteExito2") {
@@ -592,7 +594,7 @@ function GuardarResultadosLaboratorio() {
       rprSifr: rprSifr,
       itsr: itsr,
       notas: notas,
-	  organizacion: organizacion
+      organizacion: organizacion
     },
     success: function (datos) {
       if (datos == "Exito1") { alertas("1", "DATOS ACTUALIZADOS EXITOSAMENTE"); }
@@ -640,7 +642,7 @@ function BuscarUsuarioSistema() {
 
 function GuardarUsuariosSistema() {
 
-  id = document.getElementById('id').value; 
+  id = document.getElementById('id').value;
   nombre = document.getElementById('nombre').value;
   ncompleto = document.getElementById('ncompleto').value;
   password1 = document.getElementById('password1').value;
